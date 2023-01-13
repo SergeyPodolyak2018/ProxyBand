@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import {getAlboms, selectAlboms,selectActiveAlbom,resetActiveAlbom} from "../users/usersSlice";
 import styles from './alboms.module.css';
-import {AlbomCard} from '../../component/albomCard'
+import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 
 
@@ -24,9 +25,12 @@ export function Alboms() {
   const resetSomeAlboms=()=>{dispatch(resetActiveAlbom())};
   return (
     <div className={styles.container} onClick={resetSomeAlboms}>
-      <div>
-        {getsomeAlboms().map((el,i) => <AlbomCard key={''+i+el.id} element={el}/>)}
-      </div>
+      <Card style={{ width: '25rem' }}>
+        <Card.Header>Albums</Card.Header>
+        <ListGroup variant="flush">
+          {getsomeAlboms().map((el,i) => <ListGroup.Item key={''+i+el.id}>{el.title}</ListGroup.Item>)}
+        </ListGroup>
+      </Card>
     </div>
   )
 }

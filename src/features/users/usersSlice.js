@@ -67,7 +67,6 @@ export const usersSlice = createSlice({
       state.status = 'loading';
       })
       .addCase(getPosts.fulfilled, (state, action) => {
-        console.log(action.payload);
         state.status = 'idle';
         state.posts = {...state.posts,[action.payload.id]:action.payload.data};
       })
